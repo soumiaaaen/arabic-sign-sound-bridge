@@ -3,18 +3,25 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
-import { Play, Pause, Volume2, Download, Settings } from 'lucide-react';
+import { Play, Pause, Volume2, Download } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 interface AudioPlayerProps {
   text: string;
+  autoPlay?: boolean;
 }
 
-const AudioPlayer: React.FC<AudioPlayerProps> = ({ text }) => {
+const AudioPlayer: React.FC<AudioPlayerProps> = ({ text, autoPlay = false }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState([80]);
   const [speed, setSpeed] = useState([1]);
   const { toast } = useToast();
+
+  React.useEffect(() => {
+    if (autoPlay && text.trim()) {
+      handlePlay();
+    }
+  }, [text, autoPlay]);
 
   const handlePlay = () => {
     if (!text.trim()) {
@@ -25,6 +32,9 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ text }) => {
       });
       return;
     }
+
+    // Stop any currently playing speech
+    speechSynthesis.cancel();
 
     if ('speechSynthesis' in window) {
       const utterance = new SpeechSynthesisUtterance(text);
@@ -139,6 +149,13 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ text }) => {
           />
         </div>
 
+        {/* Current Text Preview */}
+        {text.trim() && (
+          <div className="p-2 bg-white/70 rounded text-sm text-gray-700" dir="rtl">
+            <strong>النص الحالي:</strong> {text}
+          </div>
+        )}
+
         {/* Status */}
         <div className="text-xs text-gray-600 bg-white/50 p-2 rounded text-center">
           {isPlaying ? (
@@ -146,7 +163,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ text }) => {
           ) : text.trim() ? (
             <span>جاهز للتشغيل</span>
           ) : (
-            <span>في انتظار النص</span>
+            <span>في انتظار كشف الإشارات</span>
           )}
         </div>
       </div>

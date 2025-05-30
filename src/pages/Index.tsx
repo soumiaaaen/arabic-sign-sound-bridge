@@ -1,21 +1,28 @@
 
 import React, { useState } from 'react';
 import Header from '../components/Header';
-import TextInput from '../components/TextInput';
-import SignDisplay from '../components/SignDisplay';
+import CameraDetection from '../components/CameraDetection';
+import DetectedText from '../components/DetectedText';
 import AudioPlayer from '../components/AudioPlayer';
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
 const Index = () => {
-  const [arabicText, setArabicText] = useState('');
-  const [translatedSigns, setTranslatedSigns] = useState<string[]>([]);
+  const [detectedTexts, setDetectedTexts] = useState<string[]>([]);
+  const [currentAudioText, setCurrentAudioText] = useState('');
 
-  const handleTextTranslation = (text: string) => {
-    setArabicText(text);
-    // Simulation de traduction - en réalité, ceci serait connecté à une API
-    const words = text.split(' ').filter(word => word.trim() !== '');
-    setTranslatedSigns(words);
+  const handleDetection = (detectedText: string) => {
+    setDetectedTexts(prev => [...prev, detectedText]);
+    setCurrentAudioText(detectedText);
+  };
+
+  const handleClearTexts = () => {
+    setDetectedTexts([]);
+    setCurrentAudioText('');
+  };
+
+  const handlePlayAudio = (text: string) => {
+    setCurrentAudioText(text);
   };
 
   return (
@@ -25,33 +32,34 @@ const Index = () => {
       <main className="container mx-auto px-4 py-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-            مترجم لغة الإشارة العربية
+            كاشف لغة الإشارة العربية
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            تطبيق متقدم لترجمة النصوص العربية إلى لغة الإشارة مع إمكانية التحويل الصوتي
+            تطبيق متقدم لكشف إشارات لغة الإشارة العربية وتحويلها إلى نص وصوت
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Input Section */}
-          <Card className="p-6 shadow-lg border-0 bg-white/80 backdrop-blur-sm">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-right">
-              إدخال النص العربي
-            </h2>
-            <TextInput onTextChange={handleTextTranslation} />
+          {/* Camera Detection Section */}
+          <div className="space-y-6">
+            <CameraDetection onDetection={handleDetection} />
             
-            <Separator className="my-6" />
-            
-            <AudioPlayer text={arabicText} />
-          </Card>
+            <Card className="p-4">
+              <AudioPlayer 
+                text={currentAudioText} 
+                autoPlay={true}
+              />
+            </Card>
+          </div>
 
-          {/* Output Section */}
-          <Card className="p-6 shadow-lg border-0 bg-white/80 backdrop-blur-sm">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-right">
-              عرض لغة الإشارة
-            </h2>
-            <SignDisplay signs={translatedSigns} />
-          </Card>
+          {/* Detected Text Display Section */}
+          <div>
+            <DetectedText 
+              detectedTexts={detectedTexts}
+              onClear={handleClearTexts}
+              onPlayAudio={handlePlayAudio}
+            />
+          </div>
         </div>
 
         {/* Features Section */}
@@ -59,19 +67,19 @@ const Index = () => {
           <h2 className="text-3xl font-bold text-gray-800 mb-8">المميزات</h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="p-6 bg-white/60 backdrop-blur-sm rounded-lg shadow-md">
-              <div className="text-4xl mb-4">🤝</div>
-              <h3 className="text-xl font-semibold mb-2">ترجمة فورية</h3>
-              <p className="text-gray-600">ترجمة النصوص العربية إلى لغة الإشارة بشكل فوري ودقيق</p>
+              <div className="text-4xl mb-4">📹</div>
+              <h3 className="text-xl font-semibold mb-2">كشف فوري</h3>
+              <p className="text-gray-600">كشف إشارات لغة الإشارة العربية باستخدام الكاميرا بشكل فوري</p>
+            </div>
+            <div className="p-6 bg-white/60 backdrop-blur-sm rounded-lg shadow-md">
+              <div className="text-4xl mb-4">📝</div>
+              <h3 className="text-xl font-semibold mb-2">تحويل إلى نص</h3>
+              <p className="text-gray-600">تحويل الإشارات المكتشفة إلى نص عربي مقروء</p>
             </div>
             <div className="p-6 bg-white/60 backdrop-blur-sm rounded-lg shadow-md">
               <div className="text-4xl mb-4">🔊</div>
               <h3 className="text-xl font-semibold mb-2">تحويل صوتي</h3>
-              <p className="text-gray-600">استماع للنص المكتوب بصوت واضح ومفهوم</p>
-            </div>
-            <div className="p-6 bg-white/60 backdrop-blur-sm rounded-lg shadow-md">
-              <div className="text-4xl mb-4">📱</div>
-              <h3 className="text-xl font-semibold mb-2">تصميم متجاوب</h3>
-              <p className="text-gray-600">يعمل على جميع الأجهزة والشاشات بكفاءة عالية</p>
+              <p className="text-gray-600">تشغيل النص المكتشف صوتياً بصوت واضح ومفهوم</p>
             </div>
           </div>
         </div>
