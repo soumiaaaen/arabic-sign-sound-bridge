@@ -1,33 +1,262 @@
 
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>مترجم لغة الإشارة العربية - Arabic Sign Language Translator</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مترجم لغة الإشارة العربية</title>
     <meta name="description" content="تطبيق متقدم لترجمة النصوص العربية إلى لغة الإشارة مع إمكانية التحويل الصوتي" />
-    <meta name="author" content="ASL Translator" />
-    <meta name="keywords" content="لغة الإشارة, ترجمة, عربي, صوت, نص, إشارة" />
-
-    <meta property="og:title" content="مترجم لغة الإشارة العربية" />
-    <meta property="og:description" content="تطبيق متقدم لترجمة النصوص العربية إلى لغة الإشارة مع إمكانية التحويل الصوتي" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@asl_translator" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
     
     <!-- Arabic Font Support -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  </head>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'arabic': ['Noto Sans Arabic', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-arabic">
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg">
+                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-800">كاشف الإشارة</h1>
+                        <p class="text-sm text-gray-600">Arabic Sign Language</p>
+                    </div>
+                </div>
+                
+                <nav class="flex items-center gap-4">
+                    <a href="register.html" class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-medium rounded-md transition-colors">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                        </svg>
+                        إنشاء حساب
+                    </a>
+                    <a href="login.html" class="flex items-center gap-2 px-4 py-2 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-md transition-colors">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        تسجيل الدخول
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <!-- Main Content -->
+    <main class="min-h-screen bg-gradient-to-br from-green-50 via-white to-teal-50">
+        <div class="container mx-auto px-4 py-8">
+            <!-- Hero Section -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent mb-4">
+                    كاشف لغة الإشارة العربية
+                </h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    تطبيق متقدم لكشف إشارات لغة الإشارة العربية وتحويلها إلى نص وصوت
+                </p>
+            </div>
+
+            <!-- Main App Section -->
+            <div class="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
+                <!-- Camera Detection Section -->
+                <div class="space-y-6">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h2 class="text-xl font-semibold mb-4">كاميرا الكشف</h2>
+                        <div class="aspect-video bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300">
+                            <div class="text-center">
+                                <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                <p class="text-gray-500">اضغط لتشغيل الكاميرا</p>
+                            </div>
+                        </div>
+                        <button id="startCamera" class="w-full mt-4 px-4 py-2 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-medium rounded-md transition-colors">
+                            تشغيل الكاميرا
+                        </button>
+                    </div>
+                    
+                    <!-- Audio Player Section -->
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-lg font-semibold mb-4">مشغل الصوت</h3>
+                        <div class="flex items-center gap-4">
+                            <button id="playAudio" class="p-2 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white rounded-full transition-colors">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h8m2-10l-6 6-6-6" />
+                                </svg>
+                            </button>
+                            <div class="flex-1 bg-gray-200 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-green-600 to-teal-600 h-2 rounded-full w-0" id="audioProgress"></div>
+                            </div>
+                            <span class="text-sm text-gray-500">00:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detected Text Display Section -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-semibold">النص المكتشف</h2>
+                        <button id="clearText" class="px-3 py-1 text-sm bg-red-100 hover:bg-red-200 text-red-600 rounded-md transition-colors">
+                            مسح الكل
+                        </button>
+                    </div>
+                    <div id="detectedTexts" class="space-y-3 min-h-[300px] max-h-96 overflow-y-auto">
+                        <div class="text-gray-500 text-center py-8">
+                            لا يوجد نص مكتشف بعد...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">المميزات</h2>
+                <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <div class="p-6 bg-white/60 backdrop-blur-sm rounded-lg shadow-md">
+                        <div class="text-4xl mb-4">📹</div>
+                        <h3 class="text-xl font-semibold mb-2">كشف فوري</h3>
+                        <p class="text-gray-600">كشف إشارات لغة الإشارة العربية باستخدام الكاميرا بشكل فوري</p>
+                    </div>
+                    <div class="p-6 bg-white/60 backdrop-blur-sm rounded-lg shadow-md">
+                        <div class="text-4xl mb-4">📝</div>
+                        <h3 class="text-xl font-semibold mb-2">تحويل إلى نص</h3>
+                        <p class="text-gray-600">تحويل الإشارات المكتشفة إلى نص عربي مقروء</p>
+                    </div>
+                    <div class="p-6 bg-white/60 backdrop-blur-sm rounded-lg shadow-md">
+                        <div class="text-4xl mb-4">🔊</div>
+                        <h3 class="text-xl font-semibold mb-2">تحويل صوتي</h3>
+                        <p class="text-gray-600">تشغيل النص المكتشف صوتياً بصوت واضح ومفهوم</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Sample detected texts for demonstration
+        const sampleTexts = [
+            'مرحبا',
+            'كيف حالك؟',
+            'أهلا وسهلا',
+            'شكرا لك'
+        ];
+
+        // Camera functionality
+        document.getElementById('startCamera').addEventListener('click', function() {
+            const button = this;
+            button.textContent = 'جاري تشغيل الكاميرا...';
+            button.disabled = true;
+            
+            // Simulate camera activation
+            setTimeout(() => {
+                button.textContent = 'إيقاف الكاميرا';
+                button.disabled = false;
+                button.classList.remove('from-green-600', 'to-teal-600', 'hover:from-green-700', 'hover:to-teal-700');
+                button.classList.add('from-red-600', 'to-red-700', 'hover:from-red-700', 'hover:to-red-800');
+                
+                // Start detecting signs (simulation)
+                startSignDetection();
+            }, 2000);
+        });
+
+        // Sign detection simulation
+        function startSignDetection() {
+            setInterval(() => {
+                if (Math.random() > 0.7) { // 30% chance to detect something
+                    const randomText = sampleTexts[Math.floor(Math.random() * sampleTexts.length)];
+                    addDetectedText(randomText);
+                }
+            }, 3000);
+        }
+
+        // Add detected text to the display
+        function addDetectedText(text) {
+            const container = document.getElementById('detectedTexts');
+            
+            // Remove placeholder if it exists
+            if (container.querySelector('.text-gray-500')) {
+                container.innerHTML = '';
+            }
+            
+            const textElement = document.createElement('div');
+            textElement.className = 'bg-gray-50 p-3 rounded-md border-r-4 border-green-500 flex items-center justify-between';
+            textElement.innerHTML = `
+                <span class="text-gray-800">${text}</span>
+                <button onclick="playTextAudio('${text}')" class="p-1 text-green-600 hover:text-green-800 transition-colors">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 14.142M6.343 6.343A8 8 0 1017.657 17.657" />
+                    </svg>
+                </button>
+            `;
+            
+            container.insertBefore(textElement, container.firstChild);
+        }
+
+        // Clear all detected texts
+        document.getElementById('clearText').addEventListener('click', function() {
+            const container = document.getElementById('detectedTexts');
+            container.innerHTML = '<div class="text-gray-500 text-center py-8">لا يوجد نص مكتشف بعد...</div>';
+        });
+
+        // Play text as audio (simulation)
+        function playTextAudio(text) {
+            console.log('Playing audio for:', text);
+            
+            // Simulate audio playback with progress
+            const progressBar = document.getElementById('audioProgress');
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 5;
+                progressBar.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        progressBar.style.width = '0%';
+                    }, 500);
+                }
+            }, 100);
+        }
+
+        // Audio player controls
+        document.getElementById('playAudio').addEventListener('click', function() {
+            const button = this;
+            const icon = button.querySelector('svg');
+            
+            // Toggle play/pause state
+            if (button.classList.contains('playing')) {
+                button.classList.remove('playing');
+                icon.innerHTML = `
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h8m2-10l-6 6-6-6" />
+                `;
+            } else {
+                button.classList.add('playing');
+                icon.innerHTML = `
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6" />
+                `;
+                playTextAudio('النص الحالي');
+            }
+        });
+    </script>
+</body>
 </html>
