@@ -27,20 +27,20 @@
     </script>
 </head>
 <body class="font-arabic">
-    <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex items-center justify-center px-4">
+    <div class="min-h-screen bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 flex items-center justify-center px-4">
         <div class="w-full max-w-md">
             <div class="text-center mb-8">
-                <h1 class="text-3xl font-bold bg-gradient-to-r from-slate-700 to-indigo-600 bg-clip-text text-transparent mb-2">
+                <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-700 to-blue-900 bg-clip-text text-transparent mb-2">
                     كاشف لغة الإشارة العربية
                 </h1>
-                <p class="text-slate-600">
+                <p class="text-blue-600">
                     إنشاء حساب جديد
                 </p>
             </div>
 
-            <div class="bg-white rounded-lg shadow-xl border border-slate-200 p-6">
+            <div class="bg-white/80 backdrop-blur-sm rounded-lg shadow-xl border border-blue-200 p-6">
                 <div class="mb-6">
-                    <h2 class="text-center text-xl font-semibold text-slate-800">
+                    <h2 class="text-center text-xl font-semibold text-blue-800">
                         التسجيل
                     </h2>
                 </div>
@@ -48,7 +48,7 @@
                 <form id="registerForm" class="space-y-6">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-2">
-                            <label for="firstName" class="text-right block text-sm font-medium text-slate-700">
+                            <label for="firstName" class="text-right block text-sm font-medium text-blue-700">
                                 الاسم الأول
                             </label>
                             <input
@@ -56,14 +56,14 @@
                                 name="firstName"
                                 type="text"
                                 placeholder="أدخل اسمك الأول"
-                                class="w-full h-10 px-3 py-2 text-right border border-slate-300 rounded-md bg-white text-sm ring-offset-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-offset-2"
+                                class="w-full h-10 px-3 py-2 text-right border border-blue-300 rounded-md bg-white/80 text-sm ring-offset-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:ring-offset-2"
                                 dir="rtl"
                                 required
                             />
                         </div>
 
                         <div class="space-y-2">
-                            <label for="lastName" class="text-right block text-sm font-medium text-slate-700">
+                            <label for="lastName" class="text-right block text-sm font-medium text-blue-700">
                                 اسم العائلة
                             </label>
                             <input
@@ -71,7 +71,7 @@
                                 name="lastName"
                                 type="text"
                                 placeholder="أدخل اسم العائلة"
-                                class="w-full h-10 px-3 py-2 text-right border border-slate-300 rounded-md bg-white text-sm ring-offset-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-offset-2"
+                                class="w-full h-10 px-3 py-2 text-right border border-blue-300 rounded-md bg-white/80 text-sm ring-offset-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:ring-offset-2"
                                 dir="rtl"
                                 required
                             />
@@ -79,7 +79,7 @@
                     </div>
 
                     <div class="space-y-2">
-                        <label for="email" class="text-right block text-sm font-medium text-slate-700">
+                        <label for="email" class="text-right block text-sm font-medium text-blue-700">
                             البريد الإلكتروني
                         </label>
                         <input
@@ -87,14 +87,14 @@
                             name="email"
                             type="email"
                             placeholder="أدخل بريدك الإلكتروني"
-                            class="w-full h-10 px-3 py-2 text-right border border-slate-300 rounded-md bg-white text-sm ring-offset-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-offset-2"
+                            class="w-full h-10 px-3 py-2 text-right border border-blue-300 rounded-md bg-white/80 text-sm ring-offset-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:ring-offset-2"
                             dir="rtl"
                             required
                         />
                     </div>
 
                     <div class="space-y-2">
-                        <label for="password" class="text-right block text-sm font-medium text-slate-700">
+                        <label for="password" class="text-right block text-sm font-medium text-blue-700">
                             كلمة المرور
                         </label>
                         <div class="relative">
@@ -103,14 +103,14 @@
                                 name="password"
                                 type="password"
                                 placeholder="أدخل كلمة المرور"
-                                class="w-full h-10 px-3 py-2 pr-10 text-right border border-slate-300 rounded-md bg-white text-sm ring-offset-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-offset-2"
+                                class="w-full h-10 px-3 py-2 pr-10 text-right border border-blue-300 rounded-md bg-white/80 text-sm ring-offset-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:ring-offset-2"
                                 dir="rtl"
                                 required
                             />
                             <button
                                 type="button"
                                 id="togglePassword"
-                                class="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500 hover:text-slate-700"
+                                class="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500 hover:text-blue-700"
                             >
                                 <svg id="eyeIcon" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -121,7 +121,7 @@
                     </div>
 
                     <div class="space-y-2">
-                        <label for="confirmPassword" class="text-right block text-sm font-medium text-slate-700">
+                        <label for="confirmPassword" class="text-right block text-sm font-medium text-blue-700">
                             تأكيد كلمة المرور
                         </label>
                         <div class="relative">
@@ -130,14 +130,14 @@
                                 name="confirmPassword"
                                 type="password"
                                 placeholder="أعد إدخال كلمة المرور"
-                                class="w-full h-10 px-3 py-2 pr-10 text-right border border-slate-300 rounded-md bg-white text-sm ring-offset-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-offset-2"
+                                class="w-full h-10 px-3 py-2 pr-10 text-right border border-blue-300 rounded-md bg-white/80 text-sm ring-offset-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:ring-offset-2"
                                 dir="rtl"
                                 required
                             />
                             <button
                                 type="button"
                                 id="toggleConfirmPassword"
-                                class="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500 hover:text-slate-700"
+                                class="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500 hover:text-blue-700"
                             >
                                 <svg id="eyeConfirmIcon" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -150,16 +150,16 @@
                     <div class="flex items-center text-sm">
                         <label class="flex items-center">
                             <input type="checkbox" class="mr-2" required />
-                            <span class="text-slate-600">أوافق على </span>
-                            <a href="#" class="text-indigo-600 hover:text-indigo-700 hover:underline mx-1">الشروط والأحكام</a>
-                            <span class="text-slate-600"> و </span>
-                            <a href="#" class="text-indigo-600 hover:text-indigo-700 hover:underline mx-1">سياسة الخصوصية</a>
+                            <span class="text-blue-600">أوافق على </span>
+                            <a href="#" class="text-blue-700 hover:text-blue-900 hover:underline mx-1">الشروط والأحكام</a>
+                            <span class="text-blue-600"> و </span>
+                            <a href="#" class="text-blue-700 hover:text-blue-900 hover:underline mx-1">سياسة الخصوصية</a>
                         </label>
                     </div>
 
                     <button
                         type="submit"
-                        class="w-full h-10 px-4 py-2 bg-gradient-to-r from-slate-600 to-indigo-600 hover:from-slate-700 hover:to-indigo-700 text-white font-medium rounded-md transition-all duration-200 inline-flex items-center justify-center gap-2 shadow-sm"
+                        class="w-full h-10 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium rounded-md transition-all duration-200 inline-flex items-center justify-center gap-2 shadow-sm"
                     >
                         <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
@@ -169,18 +169,18 @@
                 </form>
 
                 <div class="mt-6 text-center">
-                    <p class="text-slate-600">
+                    <p class="text-blue-600">
                         لديك حساب بالفعل؟{' '}
-                        <a href="login.html" class="text-indigo-600 hover:text-indigo-700 hover:underline font-medium">
+                        <a href="login.html" class="text-blue-700 hover:text-blue-900 hover:underline font-medium">
                             تسجيل الدخول
                         </a>
                     </p>
                 </div>
 
-                <div class="mt-6 pt-6 border-t border-slate-200">
+                <div class="mt-6 pt-6 border-t border-blue-200">
                     <a
                         href="index.html"
-                        class="block text-center text-indigo-600 hover:text-indigo-700 hover:underline"
+                        class="block text-center text-blue-700 hover:text-blue-900 hover:underline"
                     >
                         ← العودة إلى الصفحة الرئيسية
                     </a>
